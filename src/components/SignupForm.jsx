@@ -13,24 +13,40 @@ const SignupForm = ({ getData }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    getData(data);
-  };
+  const onSubmit = (data) => getData(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h4>name:</h4>
-      <input {...register('name', validateName)} />
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <h5>
+        name:<sup>*</sup>
+      </h5>
+
+      <input className="form-input" {...register('name', validateName)} />
       {errors.name && <span>{errors.name.message}</span>}
-      <h4>role:</h4>
-      <input {...register('role')} />
-      <h4>email:</h4>
-      <input {...register('email', validateEmail)} type="email" />
+
+      <h5>role:</h5>
+      <input className="form-input" {...register('role')} />
+
+      <h5>
+        email:<sup>*</sup>
+      </h5>
+      <input
+        className="form-input"
+        {...register('email', validateEmail)}
+        type="email"
+      />
       {errors.email && <span>{errors.email.message}</span>}
-      <h4>password:</h4>
-      <input {...register('password', validatePassword)} type="password" />
+
+      <h5>
+        password:<sup>*</sup>
+      </h5>
+      <input
+        className="form-input"
+        {...register('password', validatePassword)}
+        type="password"
+      />
       {errors.password && <span>{errors.password.message}</span>}
-      <input type="submit" />
+      <input className="submit" type="submit" />
     </form>
   );
 };

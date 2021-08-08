@@ -9,30 +9,38 @@ const PrivacyForm = ({ getData }) => {
     getData(data);
   };
 
+  const locale = {
+    receiveUpdates: ' Receive updates about Tray.io products by email',
+    receiveComms:
+      ' Receive communications by email for other products created by the Tray.io team',
+    submit: 'Submit',
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <div>
         <input
           {...register('receiveUpdates')}
           name="receiveUpdates"
           value={true}
           type="checkbox"
         />
-        Receive updates about Tray.io products by email
-      </label>
+        {locale.receiveUpdates}
+      </div>
       <br />
-      <label>
+      <div>
         <input
           {...register('receiveComms')}
           name="receiveComms"
           value={true}
           type="checkbox"
         />
-        Receive communications by email for other products created by the
-        Tray.io team
-      </label>
+        {locale.receiveComms}
+      </div>
       <br />
-      <button type="submit">submit</button>
+      <button className="submit" type="submit">
+        {locale.submit}
+      </button>
     </form>
   );
 };

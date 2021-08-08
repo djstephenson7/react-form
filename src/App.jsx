@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
 
 import Tabs from './components/Tabs';
 import SignupForm from './components/SignupForm';
@@ -6,21 +7,27 @@ import PrivacyForm from './components/PrivacyForm';
 import Confirmation from './components/Confirmation';
 
 const App = () => {
-  let finalData;
+  const [currentTab, setCurrentTab] = useState(0);
+  const [finalData, setFinalData] = useState({});
 
-  const getDetails = (data) => {
-    finalData = { ...finalData, ...data };
+  useEffect(() => {
+    currentTab > 1 && console.log(finalData);
+  }, [finalData, currentTab]);
+
+  const handlSignupPress = (data) => {
+    setFinalData({ ...finalData, ...data });
+    setCurrentTab(currentTab + 1);
   };
 
   return (
     <div className="App">
-      <div style={{ height: 500, width: 500, border: '1px solid black' }}>
-        <Tabs
-          firstTab={<SignupForm getData={getDetails} />}
-          secondTab={<PrivacyForm getData={getDetails} />}
-          thirdTab={<Confirmation />}
-        />
-      </div>
+      <Tabs
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        firstTab={<SignupForm getData={handlSignupPress} />}
+        secondTab={<PrivacyForm getData={handlSignupPress} />}
+        thirdTab={<Confirmation />}
+      />
     </div>
   );
 };

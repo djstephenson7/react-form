@@ -6,3 +6,69 @@
   justify-content: center;
   align-items: center;
 }
+
+.tabs {
+  display: flex;
+}
+.tab-active {
+  flex: 1;
+  background-color: lightblue;
+}
+.tab-inactive {
+  flex: 1;
+}
+
+.form-input {
+  display: flex;
+  width: 90%;
+  margin-left: 16px;
+}
+
+.submit {
+  margin: 32px 16px 16px 82%;
+  background-color: green;
+  color: antiquewhite;
+  padding: 4px 8px 4px 8px;
+}
+
+.form {
+  margin: 16px;
+}
+
+.tab-content {
+  padding: 32px 16px 16px 16px;
+}
+
+.simple-tabs {
+  border: 1px solid black;
+  width: 500px;
+}
+
+.icon-container {
+  text-align: center;
+}
+.icon {
+  font-size: 56px;
+  color: green;
+}
+
+.icon-text {
+  color: green;
+  text-align: center;
+}
+
+span {
+  margin: 4px 0px 0px 16px;
+  font-size: 12px;
+  color: red;
+  display: flex;
+  width: 95%;
+}
+
+sup {
+  color: red;
+}
+
+h5 {
+  margin: 0px 0px 4px 16px;
+}

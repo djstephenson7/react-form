@@ -1,24 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Tabs = ({ firstTab, secondTab, thirdTab }) => {
-  const [currentTab, setCurrentTab] = useState('tab1');
+const Tabs = ({ currentTab, setCurrentTab, firstTab, secondTab, thirdTab }) => {
   const tabList = [
-    {
-      name: 'tab1',
-      label: 'User',
-      content: firstTab,
-    },
-    {
-      name: 'tab2',
-      label: 'Privacy',
-      content: secondTab,
-    },
-    {
-      name: 'tab3',
-      label: 'Done',
-      content: thirdTab,
-    },
+    { index: 0, label: 'User', content: firstTab },
+    { index: 1, label: 'Privacy', content: secondTab },
+    { index: 2, label: 'Done', content: thirdTab },
   ];
+
+  const handleTabClick = (tab) => tab < currentTab && setCurrentTab(tab);
 
   return (
     <div className="simple-tabs">
@@ -26,15 +15,15 @@ const Tabs = ({ firstTab, secondTab, thirdTab }) => {
         {tabList.map((tab, i) => (
           <button
             key={i}
-            onClick={() => setCurrentTab(tab.name)}
-            className={tab.name === currentTab ? 'active' : ''}
+            onClick={() => handleTabClick(tab.index)}
+            className={tab.index === currentTab ? 'tab-active' : 'tab-inactive'}
           >
             {tab.label}
           </button>
         ))}
       </div>
       {tabList.map(
-        (tab, i) => tab.name === currentTab && <div key={i}>{tab.content}</div>
+        (tab, i) => tab.index === currentTab && <div key={i}>{tab.content}</div>
       )}
     </div>
   );
